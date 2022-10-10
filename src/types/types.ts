@@ -6,8 +6,8 @@ export type apiData = {
 }
 
 export type AppContext = {
-  defaultCardsData: Array<apiData>;
-  setDefaultCardsData: (cardsDisplayed: Array<apiData>) => void;
-  cardsDisplayed: Array<apiData>;
-  setCardsDisplayed: (cardsDisplayed: Array<apiData>) => void | null;
+  defaultCardsData: Array<apiData>
+  setDefaultCardsData: (cardsDisplayed: Array<apiData>) => void
+  cardsDisplayed: Array<apiData>
+  setCardsDisplayed: (cardsDisplayed: Array<apiData>) => void | null
 }

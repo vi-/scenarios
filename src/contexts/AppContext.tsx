@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import { apiData, AppContext } from '../types/types';
+import React, { createContext, useContext, useState } from 'react'
+import { apiData, AppContext } from '../types/types'
 
 const dummyApiData: Array<apiData> = [
   {
@@ -41,23 +41,23 @@ const defaultGlobalAppState = {
   setCardsDisplayed: () => console.log('must be used within AppContextProvide'),
 }
 
-const GlobalAppContext = createContext<AppContext>(defaultGlobalAppState);
+const GlobalAppContext = createContext<AppContext>(defaultGlobalAppState)
 
 type Props = {
   children: React.ReactNode;
 }
 
 export const useAppContext = () => {
-  const context = useContext<AppContext>(GlobalAppContext);
+  const context = useContext<AppContext>(GlobalAppContext)
   if (context === undefined || context === null) {
-    throw new Error('useAppContext must be used within a AppContextProvider');
+    throw new Error('useAppContext must be used within a AppContextProvider')
   }
-  return context;
+  return context
 };
 
 export const AppContextProvider = ({ children }: Props) => {
-  const [cardsDisplayed, setCardsDisplayed] = useState(dummyApiData);
-  const [defaultCardsData, setDefaultCardsData] = useState(dummyApiData);
+  const [cardsDisplayed, setCardsDisplayed] = useState(dummyApiData)
+  const [defaultCardsData, setDefaultCardsData] = useState(dummyApiData)
 
   return <GlobalAppContext.Provider value={{
     cardsDisplayed,
