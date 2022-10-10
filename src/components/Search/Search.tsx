@@ -4,8 +4,7 @@ import { ReactComponent as SearchIcon } from "../../assets/svg/icon-search.svg"
 import { SearchContainer } from './Search.styled'
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState('');
-  const { defaultCardsData, setCardsDisplayed } = useAppContext()
+  const { defaultCardsData, setCardsDisplayed, searchInput, setSearchInput } = useAppContext()
 
   const handleSearchAction = () => {
     const scenarios = [...defaultCardsData].filter(
@@ -18,37 +17,22 @@ const Search = () => {
     setSearchInput(evt.target.value)
   }
 
-  const handleSearchEnter = (evt: React.KeyboardEvent) => {
-    if (evt.key === 'Enter') {
-      handleSearchAction()
-    }
-  }
-
-  const handleSearchClick = () => {
-    handleSearchAction()
-  }
-
   useEffect(() => {
-    if (searchInput === '') setCardsDisplayed(defaultCardsData)
-  }, [defaultCardsData, searchInput, setCardsDisplayed])
+    handleSearchAction()
+  }, [searchInput])
 
   return (
     <SearchContainer role="search">
-      <label className="visually-hidden">Search</label>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchInput}
-        onChange={handleSearchInput}
-        onKeyDown={handleSearchEnter}
-      />
-      <button
-        value="search"
-        // disabled={searchInput.length === 0}
-        onClick={handleSearchClick}
-      >
-        <SearchIcon /><span className="visually-hidden">Search</span>
-      </button>
+      <div className="wrap">
+        <label className="visually-hidden">Search</label>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchInput}
+          onChange={handleSearchInput}
+        />
+        <SearchIcon />
+      </div>
     </SearchContainer>
   )
 }

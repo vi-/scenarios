@@ -9,5 +9,7 @@ export type AppContext = {
   defaultCardsData: Array<apiData>
   setDefaultCardsData: (cardsDisplayed: Array<apiData>) => void
   cardsDisplayed: Array<apiData>
-  setCardsDisplayed: (cardsDisplayed: Array<apiData>) => void | null
+  setCardsDisplayed: (cardsDisplayed: Array<apiData>) => void
+  searchInput: string
+  setSearchInput: (cardsDisplayed: string) => void
 }

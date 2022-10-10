@@ -3,7 +3,7 @@ import { colours, media } from '../../GlobalStyles'
 
 const SearchContainer = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 16px;
   width: 100%;
   
   ${media.md`
@@ -11,7 +11,13 @@ const SearchContainer = styled.div`
     max-width: 320px;
   `}
 
+  .wrap {
+    position: relative;
+    width: 100%;
+  }
+
   input {
+    width: 100%;
     border: 1px solid ${colours.borderGrey};
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -19,6 +25,14 @@ const SearchContainer = styled.div`
     font-size: 0.9rem;
     flex: 1 0 auto;
   }
+
+  svg {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      width: 20px;
+      height: auto;
+    }
 
   button {
     position: relative;
@@ -46,12 +60,6 @@ const SearchContainer = styled.div`
         background-color: ${colours.white};
         cursor: not-allowed;
       }
-    }
-
-    svg {
-      width: 80%;
-      height: auto;
-      padding: 8px;
     }
   }
 `;

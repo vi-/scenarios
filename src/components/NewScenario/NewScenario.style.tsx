@@ -19,7 +19,7 @@ const NewScenarioContainer = styled.div`
     color: ${colours.midGrey};
 
     &:hover {
-      box-shadow: 0px 10px 40px -4px rgba(0,0,0,0.125);
+      box-shadow: 0px 10px 40px -4px rgba(0,0,0,0.2);
     }
   }
 
@@ -36,6 +36,8 @@ const NewScenarioContainer = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    border-radius: 8px;
+    border: 2px solid ${colours.borderGrey};
 
     &.is-visible {
       visibility: visible;
