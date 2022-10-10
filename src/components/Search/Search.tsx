@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useAppContext } from "../../contexts/AppContext";
 import { ReactComponent as SearchIcon } from "../../assets/svg/icon-search.svg"
 import { SearchContainer } from './Search.styled'
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState('')
-  const { defaultCardsData, setCardsDisplayed } = useAppContext()
+  const { defaultCardsData, setCardsDisplayed, searchInput, setSearchInput } = useAppContext()
 
   const handleSearchAction = () => {
     const scenarios = [...defaultCardsData].filter(

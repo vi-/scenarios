@@ -8,7 +8,7 @@ const ScenariosContainer = styled.main`
   grid-template-columns: repeat(1, minmax(0, 1fr));
   grid-gap: 16px;
 
-  .no-results {
+  .no-results, .loading {
     background-color: ${colours.white};
     padding: 25px;
     grid-column: 2 / span 1;

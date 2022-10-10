@@ -2,11 +2,12 @@ import { useState, useRef, useEffect } from "react"
 import { NewScenarioContainer } from './NewScenario.style'
 import { useAppContext } from "../../contexts/AppContext"
 import { apiData } from "../../types/types"
+import { sortArrayOfObjects } from "../../utils/utils"
 
 const NewScenario = () => {
   const [newScenarioUiVisible, setNewScenarioUiVisible] = useState(false)
   const [newScenarioName, setNewScenarioName] = useState('')
-  const { cardsDisplayed, setCardsDisplayed, setDefaultCardsData, defaultCardsData } = useAppContext()
+  const { cardsDisplayed, setCardsDisplayed, setDefaultCardsData, defaultCardsData, sortBy, isAscendingOrder, setSearchInput } = useAppContext()
   const newScenarioInputRef = useRef<HTMLInputElement>(null);
 
   const handleNewScenarioClick = () => {
@@ -28,8 +29,9 @@ const NewScenario = () => {
         created,
         status: 'unoptimised'
       }
-      setDefaultCardsData([...defaultCardsData, newCard])
-      setCardsDisplayed([...cardsDisplayed, newCard])
+      setSearchInput('')
+      setDefaultCardsData(sortArrayOfObjects([...defaultCardsData, newCard], sortBy, isAscendingOrder))
+      setCardsDisplayed(sortArrayOfObjects([...cardsDisplayed, newCard], sortBy, isAscendingOrder))
       setNewScenarioName('')
       setNewScenarioUiVisible(false)
     }

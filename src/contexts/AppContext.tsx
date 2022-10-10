@@ -1,44 +1,18 @@
 import React, { createContext, useContext, useState } from 'react'
-import { apiData, AppContext } from '../types/types'
-
-const dummyApiData: Array<apiData> = [
-  {
-    name: 'Scenario',
-    id: 1,
-    created: '2022-01-01T11:00:00',
-    status: 'failed'
-  },
-  {
-    name: 'Scenario 1',
-    id: 2,
-    created: '2022-04-10T11:00:00',
-    status: 'results optimised'
-  },
-  {
-    name: 'Scenario 2',
-    id: 4,
-    created: '2022-05-15T11:32:00',
-    status: 'failed'
-  },
-  {
-    name: 'Scenario Name',
-    id: 5,
-    created: '2022-05-03T21:11:00',
-    status: 'results optimised'
-  },
-  {
-    name: 'Scenario New',
-    id: 6,
-    created: '2022-10-08T21:11:00',
-    status: 'unoptimised'
-  }
-]
+import { AppContext, apiData } from '../types/types'
 
 const defaultGlobalAppState = {
-  defaultCardsData: dummyApiData,
-  cardsDisplayed: dummyApiData,
-  setDefaultCardsData: () => console.log('must be used within AppContextProvide'),
-  setCardsDisplayed: () => console.log('must be used within AppContextProvide'),
+  defaultCardsData: [],
+  cardsDisplayed: [],
+  sortBy: 'name',
+  isAscendingOrder: true,
+  searchInput: '',
+  setDefaultCardsData: () => console.log('must be used within AppContextProvider'),
+  setCardsDisplayed: () => console.log('must be used within AppContextProvider'),
+  setSortBy: () => console.log('must be used within AppContextProvider'),
+  setIsAscendingOrder: () => console.log('must be used within AppContextProvider'),
+  setSearchInput: () => console.log('must be used within AppContextProvider'),
+
 }
 
 const GlobalAppContext = createContext<AppContext>(defaultGlobalAppState)
@@ -56,14 +30,23 @@ export const useAppContext = () => {
 };
 
 export const AppContextProvider = ({ children }: Props) => {
-  const [cardsDisplayed, setCardsDisplayed] = useState(dummyApiData)
-  const [defaultCardsData, setDefaultCardsData] = useState(dummyApiData)
+  const [cardsDisplayed, setCardsDisplayed] = useState<apiData[]>([])
+  const [defaultCardsData, setDefaultCardsData] = useState<apiData[]>([])
+  const [sortBy, setSortBy] = useState<string>('name')
+  const [isAscendingOrder, setIsAscendingOrder] = useState(true)
+  const [searchInput, setSearchInput] = useState('')
 
   return <GlobalAppContext.Provider value={{
     cardsDisplayed,
     setCardsDisplayed,
     defaultCardsData,
     setDefaultCardsData,
+    sortBy,
+    setSortBy,
+    isAscendingOrder,
+    setIsAscendingOrder,
+    searchInput,
+    setSearchInput
   }}
   >
     {children}

@@ -5,6 +5,8 @@ import Sort from './components/Sort/Sort'
 import Search from './components/Search/Search'
 
 function App() {
+
+
   return (
     <AppContextProvider>
       <div className="App">

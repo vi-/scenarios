@@ -1,27 +1,15 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useAppContext } from "../../contexts/AppContext";
 import { ReactComponent as AscendingIcon } from "../../assets/svg/icon-ascending.svg"
 import { SortContainer } from './Sort.styled'
+import { sortArrayOfObjects } from "../../utils/utils";
 
 const Sort = () => {
-  const [isAscendingOrder, setIsAscendingOrder] = useState(true)
-  const { cardsDisplayed, setCardsDisplayed } = useAppContext()
-
-  const sortByParam = (param: string) => {
-    const sortedArray = [...cardsDisplayed].sort((a: any, b: any) => {
-      if (a[param] < b[param]) {
-        return -1
-      }
-      if (a[param] > b[param]) {
-        return 1
-      }
-      return 0
-    })
-    return isAscendingOrder ? sortedArray : sortedArray.reverse()
-  }
+  const { cardsDisplayed, setCardsDisplayed, setSortBy, isAscendingOrder, setIsAscendingOrder } = useAppContext()
 
   const handleSortChange = (evt: any) => {
-    const sortedArray = sortByParam(evt.target.value)
+    const sortedArray = sortArrayOfObjects(cardsDisplayed, evt.target.value, isAscendingOrder)
+    setSortBy(evt.target.value)
     setCardsDisplayed(sortedArray)
   }
 
