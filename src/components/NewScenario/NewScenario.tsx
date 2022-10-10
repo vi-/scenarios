@@ -6,7 +6,7 @@ import { apiData } from "../../types/types"
 const NewScenario = () => {
   const [newScenarioUiVisible, setNewScenarioUiVisible] = useState(false)
   const [newScenarioName, setNewScenarioName] = useState('')
-  const { cardsDisplayed, setCardsDisplayed, setDefaultCardsData, defaultCardsData, setSearchInput } = useAppContext()
+  const { cardsDisplayed, setCardsDisplayed, setDefaultCardsData, defaultCardsData } = useAppContext()
   const newScenarioInputRef = useRef<HTMLInputElement>(null);
 
   const handleNewScenarioClick = () => {
@@ -28,7 +28,6 @@ const NewScenario = () => {
         created,
         status: 'unoptimised'
       }
-      setSearchInput('');
       setDefaultCardsData([...defaultCardsData, newCard])
       setCardsDisplayed([...cardsDisplayed, newCard])
       setNewScenarioName('')

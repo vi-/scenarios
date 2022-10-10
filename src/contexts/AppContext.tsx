@@ -37,10 +37,8 @@ const dummyApiData: Array<apiData> = [
 const defaultGlobalAppState = {
   defaultCardsData: dummyApiData,
   cardsDisplayed: dummyApiData,
-  searchInput: '',
   setDefaultCardsData: () => console.log('must be used within AppContextProvide'),
   setCardsDisplayed: () => console.log('must be used within AppContextProvide'),
-  setSearchInput: () => console.log('must be used within AppContextProvide'),
 }
 
 const GlobalAppContext = createContext<AppContext>(defaultGlobalAppState)
@@ -60,15 +58,12 @@ export const useAppContext = () => {
 export const AppContextProvider = ({ children }: Props) => {
   const [cardsDisplayed, setCardsDisplayed] = useState(dummyApiData)
   const [defaultCardsData, setDefaultCardsData] = useState(dummyApiData)
-  const [searchInput, setSearchInput] = useState('')
 
   return <GlobalAppContext.Provider value={{
     cardsDisplayed,
     setCardsDisplayed,
     defaultCardsData,
     setDefaultCardsData,
-    searchInput,
-    setSearchInput,
   }}
   >
     {children}

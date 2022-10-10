@@ -4,7 +4,8 @@ import { ReactComponent as SearchIcon } from "../../assets/svg/icon-search.svg"
 import { SearchContainer } from './Search.styled'
 
 const Search = () => {
-  const { defaultCardsData, setCardsDisplayed, searchInput, setSearchInput } = useAppContext()
+  const [searchInput, setSearchInput] = useState('')
+  const { defaultCardsData, setCardsDisplayed } = useAppContext()
 
   const handleSearchAction = () => {
     const scenarios = [...defaultCardsData].filter(

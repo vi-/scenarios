@@ -10,6 +10,4 @@ export type AppContext = {
   setDefaultCardsData: (cardsDisplayed: Array<apiData>) => void
   cardsDisplayed: Array<apiData>
   setCardsDisplayed: (cardsDisplayed: Array<apiData>) => void
-  searchInput: string
-  setSearchInput: (cardsDisplayed: string) => void
 }
